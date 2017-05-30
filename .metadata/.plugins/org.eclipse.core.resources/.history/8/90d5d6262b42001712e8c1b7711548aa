@@ -1,0 +1,27 @@
+/**    
+ * 文件名：UDPClient.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月26日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package JNetSocket;
+
+/**    
+ *     
+ * 项目名称：JNetSocket    
+ * 类名称：UDPClient    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月26日 下午11:49:16    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月26日 下午11:49:16    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class UDPClient {
+
+}

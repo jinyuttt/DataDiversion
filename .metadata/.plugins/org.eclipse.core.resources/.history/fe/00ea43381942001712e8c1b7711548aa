@@ -1,0 +1,17 @@
+package DataControls;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class StateLamp extends JPanel {
+ private JLabel title;
+ private 
+    /**    
+     * serialVersionUID:TODO（用一句话描述这个变量表示什么）    
+     *    
+     * @since Ver 1.1    
+     */    
+    
+    private static final long serialVersionUID = 1L;
+
+}

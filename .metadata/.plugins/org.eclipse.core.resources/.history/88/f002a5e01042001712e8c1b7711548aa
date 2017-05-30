@@ -1,0 +1,7 @@
+package DataControls;
+
+import javax.swing.JFrame;
+
+public class StateLight extends JFrame {
+
+}

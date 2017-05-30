@@ -1,0 +1,72 @@
+/**    
+ * 文件名：ControlHeart.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package TimerTask;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import DataConfig.NetConfig;
+import JNetSocket.MulticastClient;
+import SysInfo.SelfSysInfo;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ControlHeart    
+ * 类描述：    发送定时心跳
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 上午11:42:38    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 上午11:42:38    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ControlHeart {
+    //
+    MulticastClient client=new MulticastClient();
+    //
+    ScheduledExecutorService service = Executors  
+            .newSingleThreadScheduledExecutor();  
+    // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间  
+    public void Start()
+    {
+        service.scheduleAtFixedRate( new Runnable() {
+
+            @Override
+            public void run() {
+             
+                
+            }
+        
+        }, 3, 1, TimeUnit.SECONDS);
+    }
+    public void SendHeart()
+    {
+        String sIP=NetConfig.getInstance().ControlCMultCastIP;
+        int port=NetConfig.getInstance().ControlCUDPPort;
+        StringBuffer sbuf=new StringBuffer();
+        sbuf.append(SelfSysInfo.SysInfo.IP);
+         sbuf.append("#");
+        sbuf.append(SelfSysInfo.SysInfo.Name);
+        
+        sbuf.append("#");
+        sbuf.append(SelfSysInfo.SysInfo.IsAction);
+        
+        sbuf.append("#");
+        sbuf.append(SelfSysInfo.SysInfo.FlageID);
+        
+        sbuf.append("#");
+        sbuf.append(SelfSysInfo.SysInfo.IsMaster);
+        
+        client.sendData(sIP, port, data);;
+    }
+}

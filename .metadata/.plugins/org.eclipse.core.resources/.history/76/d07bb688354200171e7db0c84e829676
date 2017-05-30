@@ -1,0 +1,46 @@
+/**    
+ * 文件名：TCPClient.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package JNetSocket;
+
+import java.net.Socket;
+
+/**    
+ *     
+ * 项目名称：JNetSocket    
+ * 类名称：TCPClient    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 上午1:01:49    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 上午1:01:49    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class TCPClient {
+    Socket clientSocket=null;
+public void sendData(byte[]data)
+{
+    clientSocket = new Socket();  
+    BufferedReader br = new BufferedReader(new FileReader("C:\\java_test\\SystemDemo.java"));  
+    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),true);  
+    String line=null;  
+    while((line=br.readLine())!=null){  
+        System.out.println(line);  
+        out.println(line);  
+    }  
+    clientSocket.shutdownOutput();  
+    BufferedReader br2 = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));  
+    String confirmMsgStr=br2.readLine();  
+    System.out.println(confirmMsgStr);  
+    br2.close();  
+    clientSocket.close();  
+}
+}

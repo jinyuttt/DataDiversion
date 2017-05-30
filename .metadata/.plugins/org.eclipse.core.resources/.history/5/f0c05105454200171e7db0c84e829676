@@ -1,0 +1,57 @@
+/**    
+ * 文件名：SqliteDB.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package DBAcess;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+/**    
+ *     
+ * 项目名称：DBAcess    
+ * 类名称：SqliteDB    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 上午2:53:47    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 上午2:53:47    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class SqliteDB {
+    // 得到连接 会在你所填写的目录建一个你命名的文件数据库  
+    Connection conn; 
+    public void  open()
+    {
+        // 加载驱动  
+        try {  
+            Class.forName("org.sqlite.JDBC");  
+        } catch (ClassNotFoundException e) {  
+            // TODO Auto-generated catch block  
+            // e.printStackTrace();  
+            System.out.println("数据库驱动未找到!");  
+        }  
+        try {  
+            conn = DriverManager.getConnection("jdbc:sqlite:c:/test.db",null,null);  
+            // 设置自动提交为false  
+            conn.setAutoCommit(false);  
+            Statement stmt = conn.createStatement();  
+              
+            //判断表是否存在  
+            ResultSet rsTables = conn.getMetaData().getTables(null, null, "student", null);  
+            if(rsTables.next()){  
+                System.out.println("表存在,创建表的事情不要做了");  
+            } else {  
+                stmt.executeUpdate("create table student (id,name);");  
+            }  
+    }
+
+}

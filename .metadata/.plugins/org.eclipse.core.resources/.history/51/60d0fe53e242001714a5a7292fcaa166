@@ -1,0 +1,51 @@
+/**    
+ * 文件名：NetConfig.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package DataConfig;
+
+import java.util.HashMap;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：NetConfig    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 下午9:31:26    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 下午9:31:26    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class NetConfig {
+public String ControlMultCastIP="";
+public int ControlMultCastPort=0;
+public String ControlUDPIP="";
+public int ControlUDPPort=0;
+public String ControlFWMultCastIP="";
+public int ControlFWMultCastPort=0;
+public String ControlFWUDPIP="";
+public int ControlFWUDPPort=0;
+public String ControlCMultCastIP="";
+public int ControlCMultCastPort=0;
+public String ControlCUDPIP="";
+public int ControlCUDPPort=0;
+public String ControlRspMultCastIP="";
+public int ControlRspMultCastPort=0;
+public String ControlRspUDPIP="";
+public int ControlRspUDPPort=0;
+public void Init()
+{
+    ReadConfig rd=new ReadConfig();
+    HashMap<String,String> hash=rd.Read();
+    
+}
+
+}

@@ -1,0 +1,51 @@
+package DataControls;
+
+
+import java.awt.BorderLayout;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class StateLamp extends JPanel {
+ private JLabel jlpic;
+ private String pngSrc="";
+ private String title="";
+ private String name="";
+ public StateLamp(String imgsrc,String title)
+ {
+     this.setLayout(new BorderLayout());
+     jlpic=new JLabel();
+     init1Frame();
+     this.add(jlpic,BorderLayout.WEST);
+ }
+ public void setName(String name)
+ {
+     this.name=name;
+ }
+ public void getName()
+ {
+     return  name;
+ }
+    /**    
+     * serialVersionUID:TODO（用一句话描述这个变量表示什么）    
+     *    
+     * @since Ver 1.1    
+     */    
+    
+    private static final long serialVersionUID = 1L;
+    public void init1Frame() {  
+        ImageIcon icon = new ImageIcon("E://Study//java//datasub//DataDiversion//src//images//bluelight.png");  
+       icon.setImage(icon.getImage().getScaledInstance(40,    40, Image.SCALE_DEFAULT));  
+       // System.out.println(icon.getIconHeight() + "" + icon.getIconWidth());  
+        jlpic.setBounds(0, 0, 30, 30);  
+       // jlpic.setHorizontalAlignment(0);
+        jlpic.setVerticalAlignment(0);
+        jlpic.setIcon(icon);  
+        jlpic.setText("light");
+        jlpic.setOpaque(false);
+        jlpic.setVerticalTextPosition(JLabel.BOTTOM);
+        jlpic.setHorizontalTextPosition(JLabel.CENTER);
+    }  
+}

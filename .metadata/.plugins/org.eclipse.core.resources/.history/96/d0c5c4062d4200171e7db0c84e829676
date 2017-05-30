@@ -1,0 +1,60 @@
+/**    
+ * 文件名：UDPClient.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月26日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package JNetSocket;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+
+/**    
+ *     
+ * 项目名称：JNetSocket    
+ * 类名称：UDPClient    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月26日 下午11:49:16    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月26日 下午11:49:16    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class UDPClient {
+    DatagramSocket socket = new DatagramSocket();  //创建套接字
+    private boolean isColse=false;
+    public int sendData(String host,int port,byte[]data)
+    {
+        InetAddress address = InetAddress.getByName(host);  //服务器地址  
+        //创建发送方的数据报信息  
+        DatagramPacket dataGramPacket = new DatagramPacket(data, data.length, address, port);  
+        socket.setSendBufferSize(128);
+        socket.send(dataGramPacket);  //通过套接字发送数据  
+    }
+    public int sendData(SocketAddress addr,byte[]data)
+    {
+        //创建发送方的数据报信息  
+        DatagramPacket dataGramPacket = new DatagramPacket(data, data.length,addr);  
+        socket.send(dataGramPacket);  //通过套接字发送数据 
+    }
+   public byte[]  getCallBack()
+   {
+       
+   }
+      
+    //接收服务器反馈数据  
+    byte[] backbuf = new byte[1024];  
+    DatagramPacket backPacket = new DatagramPacket(backbuf, backbuf.length);  
+    socket.receive(backPacket);  //接收返回数据  
+    String backMsg = new String(backbuf, 0, backPacket.getLength());  
+    System.out.println("服务器返回的数据为:" + backMsg);  
+      
+    socket.close();  
+}

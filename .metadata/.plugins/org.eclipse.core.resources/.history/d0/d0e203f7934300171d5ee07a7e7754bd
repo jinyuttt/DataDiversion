@@ -1,0 +1,49 @@
+/**    
+ * 文件名：ClientProcess.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package ClientProcess;
+
+import java.nio.ByteBuffer;
+import java.util.LinkedList;
+
+import ServerProcess.ServerDataTransfer;
+import SysInfo.FWServer;
+import SysInfo.ServerModel;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ClientProcess    
+ * 类描述：    处理客户端请求
+ * 描述：服务名称+数据
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 下午3:29:32    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 下午3:29:32    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ClientProcess {
+public void processData(String src,byte[]data)
+{
+     ByteBuffer buf=ByteBuffer .wrap(data);
+     buf.flip();
+     int len=buf.getInt();
+     byte[]dst=new byte[len];//服务名称
+     buf.get(dst);
+     String fwName=new String(dst);
+     int dlen=buf.limit()-buf.position();
+    byte[]clientData=new byte[dlen];
+    buf.get(clientData);
+    //查找空闲
+    ServerDataTransfer server=new ServerDataTransfer();
+    server.processData(src, fwName, clientData);
+}
+}

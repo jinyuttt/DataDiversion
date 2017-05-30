@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/Study/java/skin/seaglasslookandfeel-0.2.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DBAcess"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JNetSocket"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JCommon"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

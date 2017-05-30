@@ -1,0 +1,72 @@
+/**    
+ * 文件名：NetConfig.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package DataConfig;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：NetConfig    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 下午9:31:26    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 下午9:31:26    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class NetConfig {
+public String ControlMultCastIP="223.0.0.1";
+public int ControlMultCastPort=5531;
+public String ControlUDPIP="host";
+public int ControlUDPPort=5532;
+public String ControlFWMultCastIP="223.0.0.1";
+public int ControlFWMultCastPort=5401;
+public String ControlFWUDPIP="host";
+public int ControlFWUDPPort=5402;
+public String ControlCMultCastIP="223.0.0.1";
+public int ControlCMultCastPort=5301;
+public String ControlCUDPIP="host";
+public int ControlCUDPPort=5302;
+public String ControlRspMultCastIP="223.0.0.1";
+public int ControlRspMultCastPort=5201;
+public String ControlRspUDPIP="host";
+public int ControlRspUDPPort=5202;
+public void Init()
+{
+    ReadConfig rd=new ReadConfig();
+    HashMap<String,String> hash=rd.Read();
+    if(hash.size()>0)
+    {
+        Iterator iter = hash.entrySet().iterator();
+       
+        while (iter.hasNext()) {
+           Map.Entry entry = (Map.Entry) iter.next();
+           String key=entry.getKey().toString();
+           Field d= this.getClass().getField(key);
+           if(key.contains("Port"))
+           {
+              d.setInt(this, Integer.parseInt(entry.getValue().toString()));
+           }
+           else
+           {
+               Object obj=entry.getValue();
+           
+           }
+          　　}
+    }
+
+
+}

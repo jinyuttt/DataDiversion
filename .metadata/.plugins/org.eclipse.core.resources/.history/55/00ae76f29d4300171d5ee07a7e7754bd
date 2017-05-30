@@ -1,0 +1,27 @@
+/**    
+ * 文件名：RspProcess.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package ControlProcess;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：RspProcess    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 下午8:05:03    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 下午8:05:03    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class RspProcess {
+
+}

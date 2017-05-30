@@ -1,0 +1,109 @@
+/**    
+ * 文件名：MulticastClient.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package JNetSocket;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+
+import ISocket.ISocketClient;
+
+/**    
+ *     
+ * 项目名称：JNetSocket    
+ * 类名称：MulticastClient    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 上午1:37:01    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 上午1:37:01    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class MulticastClient implements ISocketClient{
+public void sendData(String sIP,int port,byte[]data)
+{
+         InetAddress inetAddress = null;
+        try {
+            inetAddress = InetAddress.getByName(sIP);
+        } catch (UnknownHostException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } //组播地址
+
+                DatagramPacket datagramPacket= new DatagramPacket(data, data.length, inetAddress, port); //发送数据报
+                DatagramSocket socket = null;
+                try {
+                    socket = new DatagramSocket();
+                } catch (SocketException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } //DatagramSocket实例
+                try {
+                    socket.send(datagramPacket);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } //发送数据
+                socket.close(); //关闭端口
+
+}
+public void sendData(SocketAddress local,String sIP,int port,byte[]data)
+{
+    InetAddress inetAddress = null;
+    try {
+        inetAddress = InetAddress.getByName(sIP);
+    } catch (UnknownHostException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+    } //组播地址
+
+            DatagramPacket datagramPacket= new DatagramPacket(data, data.length, inetAddress, port); //发送数据报
+            DatagramSocket socket = null;
+            try {
+                socket = new DatagramSocket(local);
+            } catch (SocketException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } //DatagramSocket实例
+            try {
+                socket.send(datagramPacket);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } //发送数据
+            socket.close(); //关闭端口
+}
+@Override
+public void sendData(byte[] data) {
+  
+    
+}
+@Override
+public void setSocket(Object socket) {
+    // TODO Auto-generated method stub
+    
+}
+@Override
+public void close() {
+    // TODO Auto-generated method stub
+    
+}
+@Override
+public byte[] getCallBackData() {
+    // TODO Auto-generated method stub
+    return null;
+}
+}

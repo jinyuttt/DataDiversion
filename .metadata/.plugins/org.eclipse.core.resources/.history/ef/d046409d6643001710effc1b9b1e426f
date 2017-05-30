@@ -1,0 +1,88 @@
+/**    
+ * 文件名：ControlListener.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package NetListener;
+
+import DataConfig.NetConfig;
+import JNetSocket.MulticastServerSocket;
+import JNetSocket.UDPServerSocket;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ControlListener    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 上午2:08:17    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 上午2:08:17    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ControlListener {
+    ControlStateListenter listenter=new ControlStateListenter();
+    FWListenter listenterFW=new FWListenter();
+    ClientListenter listenterReq=new ClientListenter();
+    /*
+     * 启动
+     */
+public void controlStart()
+{
+    //监听组播
+    String sIP=NetConfig.getInstance().ControlMultCastIP;
+    int port=NetConfig.getInstance().ControlMultCastPort;;
+    String host=NetConfig.getInstance().ControlUDPIP;
+    int uport=NetConfig.getInstance().ControlUDPPort;
+    MulticastServerSocket server=new MulticastServerSocket();
+    server.InitServer(listenter, sIP, port);
+    //监听UDP
+    UDPServerSocket userver=new UDPServerSocket();
+    if(host=="host")
+    {
+        host="";
+    }
+    userver.InitServer(listenter, host, uport);
+}
+public void   registerFW()
+{
+    //监听组播
+    String sIP=NetConfig.getInstance().ControlFWMultCastIP;
+    int port=NetConfig.getInstance().ControlFWUDPPort;;
+    String host=NetConfig.getInstance().ControlFWUDPIP;
+    int uport=NetConfig.getInstance().ControlFWUDPPort;
+    MulticastServerSocket server=new MulticastServerSocket();
+    server.InitServer(listenterFW, sIP, port);
+    //监听UDP
+    UDPServerSocket userver=new UDPServerSocket();
+    if(host=="host")
+    {
+        host="";
+    }
+    userver.InitServer(listenterFW, host, uport);
+}
+
+public void clientRequest()
+{
+    //监听组播
+    String sIP=NetConfig.getInstance().ControlCMultCastIP;
+    int port=NetConfig.getInstance().ControlCMultCastPort;;
+    String host=NetConfig.getInstance().ControlCUDPIP;
+    int uport=NetConfig.getInstance().ControlCUDPPort;
+    MulticastServerSocket server=new MulticastServerSocket();
+    server.InitServer(listenterReq, sIP, port);
+    //监听UDP
+    UDPServerSocket userver=new UDPServerSocket();
+    if(host=="host")
+    {
+        host="";
+    }
+    userver.InitServer(listenterReq, host, uport);
+}
+}

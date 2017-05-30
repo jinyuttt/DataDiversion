@@ -1,0 +1,109 @@
+/**    
+ * 文件名：BerkeleyDB.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package DBAcess;
+
+import java.io.File;
+
+import com.sleepycat.je.DatabaseConfig;
+import com.sleepycat.je.DatabaseException;
+import com.sleepycat.je.Environment;
+import com.sleepycat.je.EnvironmentConfig;
+
+/**    
+ *     
+ * 项目名称：DBAcess    
+ * 类名称：BerkeleyDB    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 上午2:05:51    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 上午2:05:51    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class BerkeleyDB {
+    Environment myDbEnvironment = null;
+    private Object myDatabase;
+public void open()
+{
+    try {
+
+        EnvironmentConfig envConfig = new EnvironmentConfig();
+
+        envConfig.setAllowCreate(true);//如果不存在则创建一个
+
+        myDbEnvironment = new Environment(new File("/export/dbEnv"), envConfig);
+
+    } catch (DatabaseException dbe) {
+
+        // 错误处理
+
+    }
+}
+public void close()
+{
+    try {
+
+        if (myDbEnvironment != null) {
+
+            myDbEnvironment.close();
+
+        }
+
+    } catch (DatabaseException dbe) {
+
+        // Exception handling goes here
+
+    }
+}
+public void clearLog()
+{
+    try {
+
+        if (myDbEnvironment != null) {
+
+            myDbEnvironment.cleanLog(); // 在关闭环境前清理下日志
+
+            myDbEnvironment.close();
+
+        }
+
+    } catch (DatabaseException dbe) {
+
+        // Exception handling goes here
+
+    }
+}
+public void setConfig()
+{
+    try {
+
+        DatabaseConfig dbConfig = new DatabaseConfig();
+
+        dbConfig.setAllowCreate(true);
+
+        dbConfig.setSortedDuplicates(true);
+
+        myDatabase =
+
+                myDbEnvironment.openDatabase(null,
+
+                                 "sampleDatabase",
+
+                                 dbConfig);
+
+    } catch (DatabaseException dbe) {
+
+        // Exception handling goes here.
+
+    }
+}
+}

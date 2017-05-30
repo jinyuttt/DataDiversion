@@ -1,0 +1,48 @@
+/**    
+ * 文件名：ClientListenter.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package NetListener;
+
+import ClientProcess.ClientProcess;
+import JNetSocket.IRecData;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ClientListenter    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 下午1:20:23    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 下午1:20:23    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ClientListenter implements IRecData {
+
+    /* (non-Javadoc)    
+     * 
+     */
+    @Override
+    public void recviceData(String src, byte[] data) {
+        ClientProcess pro=new ClientProcess();
+        pro.processData(src, data, objSocket);
+    }
+
+    /* (non-Javadoc)    
+     * @see JNetSocket.IRecData#setServer(java.lang.Object)    
+     */
+    @Override
+    public void setServer(Object socket) {
+        // TODO Auto-generated method stub
+
+    }
+
+}

@@ -1,0 +1,71 @@
+/**    
+ * 文件名：ReadConfig.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package DataConfig;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ReadConfig    
+ * 类描述：   读取配置信息
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 下午8:57:55    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 下午8:57:55    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ReadConfig {
+public void Read()
+{
+    Properties p=new Properties();
+    //InputStream is=ClassLoader.getSystemResourceAsStream("db.properties");
+    InputStream is=Thread.currentThread().getContextClassLoader().getSystemResourceAsStream("db.properties");
+    try {
+        p.load(is);
+       
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    System.out.println(p);
+}
+private void write()
+{
+    Properties prop = new Properties();   
+    ///保存属性到b.properties文件
+      FileOutputStream oFile;
+    try {
+        oFile = new FileOutputStream("b.properties", true);
+    } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }//true表示追加打开
+      prop.setProperty("phone", "10086");
+     try {
+        prop.store(oFile, "The New properties file");
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+     try {
+        oFile.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+}

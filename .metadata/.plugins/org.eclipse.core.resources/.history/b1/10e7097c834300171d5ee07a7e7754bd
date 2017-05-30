@@ -1,0 +1,5 @@
+package ISocket;
+
+public interface ISocketClient {
+
+}

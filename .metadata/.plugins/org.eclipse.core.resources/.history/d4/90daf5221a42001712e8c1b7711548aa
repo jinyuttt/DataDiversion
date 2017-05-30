@@ -1,0 +1,31 @@
+package DataControls;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class StateLamp extends JPanel {
+ private JLabel jlpic;
+ 
+    /**    
+     * serialVersionUID:TODO（用一句话描述这个变量表示什么）    
+     *    
+     * @since Ver 1.1    
+     */    
+    
+    private static final long serialVersionUID = 1L;
+    public void init1Frame() {  
+        ImageIcon icon = new ImageIcon("image\\benbenla.jpg");  
+        icon.setImage(icon.getImage().getScaledInstance(icon.getIconWidth(),  
+                icon.getIconHeight(), Image.SCALE_DEFAULT));  
+        System.out.println(icon.getIconHeight() + "" + icon.getIconWidth());  
+        jlpic.setBounds(0, 0, 1366, 768);  
+        jlpic.setHorizontalAlignment(0);  
+        jlpic.setIcon(icon);  
+        jframe.setSize(1366, 768);  
+        jframe.add(jlpic);  
+        jframe.pack();  
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        jframe.setVisible(true);  
+  
+    }  
+}

@@ -1,0 +1,40 @@
+/**    
+ * 文件名：IDUnit.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package JCommonUnit;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
+
+/**    
+ *     
+ * 项目名称：JCommon    
+ * 类名称：IDUnit    
+ * 类描述：    
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 下午11:03:09    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 下午11:03:09    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class IDUnit {
+private AtomicInteger id=new AtomicInteger(0);
+private static Object lock_obj=new Object();
+public static String getID()
+{
+    SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
+    Date date = new Date();  
+    String tim = sdf.format(date);
+    return tim;
+    
+}
+}

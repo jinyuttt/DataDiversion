@@ -1,0 +1,92 @@
+/**    
+ * 文件名：ReadConfig.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月27日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package DataConfig;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ReadConfig    
+ * 类描述：   读取配置信息
+ * 创建人：jinyu    
+ * 创建时间：2017年5月27日 下午8:57:55    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月27日 下午8:57:55    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ReadConfig {
+public void Read()
+{
+    Properties p=new Properties();
+    //InputStream is=ClassLoader.getSystemResourceAsStream("db.properties");
+    InputStream is=Thread.currentThread().getContextClassLoader().getSystemResourceAsStream("db.properties");
+    try {
+        p.load(is);
+       
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    System.out.println(p);
+}
+private void write()
+{
+    Properties prop = new Properties();   
+    ///保存属性到b.properties文件
+      FileOutputStream oFile = null;
+    try {
+        oFile = new FileOutputStream("b.properties", true);
+    } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }//true表示追加打开
+    //*------控制器之间----
+    //控制器之间的查询组播
+      prop.setProperty("ControlMultCastIP", "223.0.0.1");
+      prop.setProperty("ControlMultCastPort", "5531");
+      //控制器之间的查询UDP
+      prop.setProperty("ControlUDPIP", "host");
+      prop.setProperty("ControlUDPPort", "5532");
+      //*------控制器与服务之间----
+      //接收服务注册的地址
+      //组播
+      prop.setProperty("ControlFWMultCastIP", "223.0.0.1");
+      prop.setProperty("ControlFWMultCastPort", "5401");
+      //UDP
+      prop.setProperty("ControlFWUDPIP", "host");
+      prop.setProperty("ControlFWUDPPort", "5402");
+      //*------控制器与客户端之间----
+      //接收客户端请求及投递数据
+      prop.setProperty("ControlCMultCastIP", "223.0.0.1");
+      prop.setProperty("ControlCMultCastPort", "5301");
+      //UDP
+      prop.setProperty("ControlCUDPIP", "223.0.0.1");
+      prop.setProperty("ControlCUDPPort", "5301");
+     try {
+        prop.store(oFile, "The New properties file");
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+     try {
+        oFile.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+}

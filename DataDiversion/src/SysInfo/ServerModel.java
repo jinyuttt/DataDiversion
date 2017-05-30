@@ -1,0 +1,106 @@
+/**    
+ * 文件名：ServerModel.java    
+ *    
+ * 版本信息：    
+ * 日期：2017年5月28日    
+ * Copyright 足下 Corporation 2017     
+ * 版权所有    
+ *    
+ */
+package SysInfo;
+
+/**    
+ *     
+ * 项目名称：DataDiversion    
+ * 类名称：ServerModel    
+ * 类描述：    服务信息
+ * 创建人：jinyu    
+ * 创建时间：2017年5月28日 上午1:24:41    
+ * 修改人：jinyu    
+ * 修改时间：2017年5月28日 上午1:24:41    
+ * 修改备注：    
+ * @version     
+ *     
+ */
+public class ServerModel {
+    /*
+     * 服务地址
+     */
+public String ServerIP;
+/*
+ * 服务名称
+ */
+public String ServerName;
+/*
+ * 服务端口
+ */
+public int Port;
+/*
+ * 服务通讯协议
+ */
+public String ProtocolType;
+
+/*
+ * 服务系统产生的ID
+ */
+public String FlageId;
+
+/*
+ * 激活
+ */
+public boolean  IsAction;
+
+/*
+ * 是否是同一个服务信息 
+ * 
+ */
+public boolean equals(Object obj)
+{
+    if(this == obj)  
+        return true;  
+     if((obj == null) || (obj.getClass() != this.getClass()))  
+        return false;  
+      ServerModel objValue = (ServerModel)obj;  
+      if(objValue.ServerIP==this.ServerIP&&objValue.Port==this.Port)
+      {
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+    
+}
+public String toString()
+{
+    StringBuffer buffer=new StringBuffer();
+    buffer.append(ServerName);
+    buffer.append("#");
+    buffer.append(ProtocolType);
+    buffer.append("#");
+    buffer.append(ServerIP);
+    buffer.append("#");
+    buffer.append(Port);
+    buffer.append("#");
+    buffer.append(FlageId);
+    return buffer.toString();
+}
+public boolean AnysModel(String buf)
+{
+    boolean issucess=false;
+    if(buf!=null&&buf.length()>0)
+    {
+        String[] value=buf.split("#");
+       if(value.length==5)
+       {
+           ServerName=value[0];
+           ProtocolType=value[0];
+           ServerIP=value[0];
+           Port=Integer.parseInt(value[0]);
+           FlageId=value[0];
+           issucess=true;
+       }
+    }
+    return issucess;
+}
+}

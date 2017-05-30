@@ -1,0 +1,63 @@
+package DataControls;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
+import javax.swing.JSplitPane;
+import java.awt.GridLayout;
+import javax.swing.JTable;
+
+public class FrmMain extends JFrame {
+
+    private JPanel contentPane;
+    private JTable table;
+
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    FrmMain frame = new FrmMain();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    /**
+     * Create the frame.
+     */
+    public FrmMain() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 538, 474);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new BorderLayout(0, 0));
+        setContentPane(contentPane);
+        
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        contentPane.add(tabbedPane, BorderLayout.CENTER);
+        
+        JPanel panel = new JPanel();
+        tabbedPane.addTab("New tab", null, panel, null);
+        panel.setLayout(new GridLayout(0, 1, 0, 0));
+        
+        JSplitPane splitPane = new JSplitPane();
+        panel.add(splitPane);
+        
+        JPanel panel_1 = new JPanel();
+        tabbedPane.addTab("New tab", null, panel_1, null);
+        
+        table = new JTable();
+        panel_1.add(table);
+    }
+
+}

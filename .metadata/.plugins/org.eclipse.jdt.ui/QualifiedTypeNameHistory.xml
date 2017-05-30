@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.alee.laf.WebLookAndFeel"/>
 <fullyQualifiedTypeName name="javax.swing.plaf.FontUIResource"/>
 <fullyQualifiedTypeName name="javax.swing.LookAndFeel"/>
-<fullyQualifiedTypeName name="javax.swing.JDialog"/>
 <fullyQualifiedTypeName name="org.pushingpixels.substance.api.skin.NebulaBrickWallSkin"/>
 <fullyQualifiedTypeName name="org.pushingpixels.substance.api.skin.SubstanceBusinessBlackSteelLookAndFeel"/>
 <fullyQualifiedTypeName name="org.pushingpixels.substance.api.SubstanceLookAndFeel"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="DataConfig.NetConfig"/>
+<fullyQualifiedTypeName name="javax.swing.UIManager"/>
+<fullyQualifiedTypeName name="javax.swing.JDialog"/>
 </qualifiedTypeNameHistroy>

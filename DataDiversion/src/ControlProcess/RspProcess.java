@@ -91,11 +91,14 @@ public void processData(String src,byte[]data)
         byte[]allData=new byte[head.length+ywdata.length];
         System.arraycopy(head, 0, allData, 0, head.length);
         System.arraycopy(ywdata, 0, allData,head.length, ywdata.length);
-        Object obj=DataCache.DataCache.hashSocket.getOrDefault(id, null);
+        //取出返回数据返回
+        Object obj=DataCache.DataCache.hashSocket.remove(id);
         ISocketClient clientcall=(ISocketClient) obj;
         clientcall.sendData(allData);
         //放入回执投递中
         DataCache.DataCache.rspData.put(idy, allData);
+        DataCache.DataCache.hashSocket.put(idy, obj);
+        //回执地址转移
     }
 }
 }

@@ -21,6 +21,10 @@ import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
 
+import NetListener.ControlListener;
+import TimerTask.ControlHeart;
+import TimerTask.DataRspTimer;
+
 public class FrmMain extends JFrame {
 
     /**    
@@ -79,6 +83,17 @@ public class FrmMain extends JFrame {
             @Override
             public void windowOpened(WindowEvent e) {
                 splitPane.setDividerLocation(0.4);
+                ControlListener listener=new ControlListener();
+                listener.controlStart();
+                listener.clientRequest();
+                listener.registerFW();
+                listener.rspCall();
+                //
+                ControlHeart heart=new ControlHeart();
+                heart.Start();
+                DataRspTimer rsp=new DataRspTimer();
+                rsp.Start();
+                rsp.startRsp();
             }
         });
         setTitle("\u7CFB\u7EDF\u63A7\u5236\u5668");

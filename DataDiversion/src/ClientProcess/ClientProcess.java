@@ -76,6 +76,8 @@ public void processData(String src,byte[]data,Object objSocket)
            rem.data=allData;
            rem.lastSend=System.currentTimeMillis();
            rem.qos=qos;
+           list.add(rem);
+           DataCache.DataCache.fwData.put(fwName, list);
        }
     }
     ServerDataTransfer server=new ServerDataTransfer();

@@ -33,7 +33,7 @@ public class DataCache {
     //服务名称
     public static ConcurrentHashMap<String,ArrayList<DataReMailing>>  fwData=new ConcurrentHashMap<String,ArrayList<DataReMailing>>();
     
-    //ID，重复投递回执数据
+    //ID，重复投递回执数据，包括业务返回的
     public static ConcurrentHashMap<String,byte[]>  rspData=new ConcurrentHashMap<String,byte[]>();
 
 }

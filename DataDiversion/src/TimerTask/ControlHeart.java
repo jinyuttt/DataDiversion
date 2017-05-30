@@ -57,7 +57,7 @@ public class ControlHeart {
     /*
      * ·¢ËÍĞÄÌø
      */
-    public void SendHeart()
+    private void SendHeart()
     {
         String sIP=NetConfig.getInstance().ControlMultCastIP;
         int port=NetConfig.getInstance().ControlMultCastPort;
